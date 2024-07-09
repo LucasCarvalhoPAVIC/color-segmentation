@@ -59,6 +59,9 @@ refPt = [(x_start, y_start), (x_end, y_end)]
 if len(refPt) == 2:
     roi = clone[refPt[0][1]:refPt[1][1], refPt[0][0]:refPt[1][0]]
     hsvRoi = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+    with open("medidas.txt",'w') as arquivo:
+        arquivo.write('lower = np.array([{},{},{}])\nupper = np.array([{},{},{}])'.format(hsvRoi[:,:,0].min(), hsvRoi[:,:,1].min(), hsvRoi[:,:,2].min(), hsvRoi[:,:,0].max(), hsvRoi[:,:,1].max(), hsvRoi[:,:,2].max()))
+
     print('min H = {}, min S = {}, min V = {}; max H = {}, max S = {}, max V = {}'.format(hsvRoi[:,:,0].min(), hsvRoi[:,:,1].min(), hsvRoi[:,:,2].min(), hsvRoi[:,:,0].max(), hsvRoi[:,:,1].max(), hsvRoi[:,:,2].max()))
    
 cv2.destroyAllWindows()

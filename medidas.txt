@@ -1,0 +1,2 @@
+lower = np.array([7,10,85])
+upper = np.array([158,116,240])
